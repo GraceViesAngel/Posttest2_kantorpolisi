@@ -1,5 +1,8 @@
 # Posttest2_kantorpolisi
 
+
+### DESKRIPSI
+
 Kantor polisi adalah lembaga layanan publik yang menjaga ketertiban, menegakkan hukum, dan melindungi masyarakat; untuk menertibkan alur kerja harian. nama sistem saya yaitu, aplikasi "Sistem Kantor Polisi" ini adalah program lanjutan Post Test 1 yang memusatkan pengelolaan Informasi Polisi, Jadwal Patroli, dan Kasus Penyelidikan melalui operasi CRUD yang dilengkapi validasi input (NRP wajib 3 digit dan unik, status terkontrol: Aktif/Cuti untuk personel; Dijadwalkan/Telah Selesai untuk jadwal; Baru/Proses/Ditutup untuk kasus; serta pengecekan bahwa NRP harus terdaftar saat membuat jadwal/kasus), menyediakan pencarian personel berdasarkan nama/pangkat dan filter jadwal per area/status serta kasus per status, menampilkan data dalam tabel konsol rapi dengan judul di tengah agar mudah dibaca saat demo, menomori otomatis entitas terjadwal dan kasus (J-1, J-2… / K-1, K-2…), menyimpan data sementara secara in-memory menggunakan List sama seperti post test 1 saya tetapi dimodif, dan ditata terstruktur dalam package data_kantorpolisi (model ber-atribut private + constructor + getter/setter), operasional_kantorpolisi (logika/CRUD, validasi, dan generator ID), serta menu_kantorpolisi (UI/entry point) sekaligus memenuhi seluruh ketentuan tugas (≥3 class, ≥3 atribut, constructor, access modifier, dan pemisahan package).
 
 

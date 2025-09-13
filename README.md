@@ -8,7 +8,10 @@ Kantor polisi adalah lembaga layanan publik yang menjaga ketertiban, menegakkan 
 Secara tampilan dan fungsi, output program pada Post Test 2 sama seperti Post Test 1, saat dijalankan aplikasi menampilkan menu utama (Informasi Polisi, Jadwal Patroli, Kasus Penyelidikan), tiap menu membuka sub-menu CRUD, dan data dicetak dalam tabel konsol rapi (mis. NRP | Nama | Pangkat | Status), sehingga perilaku hasil di layar tidak berubah; perbedaannya ada pada arsitektur dan kualitas internal kode dipisah per package dan program lebih terstruktur .
 
 ![WhatsApp Image 2025-09-13 at 19 19 29_b5e7d7e1](https://github.com/user-attachments/assets/71a1afd0-6f99-45d7-99dc-fbf46c521fda)
+
+
 => PENJELASAN
+
 Saat dijalankan, 'AplikasiKantorPolisi' membuat data contoh (seed), lalu menampilkan **Menu Utama** berisi tiga yaitu: **Informasi Polisi**, **Jadwal Patroli**, dan **Kasus Penyelidikan**. saya memilih menu, kemudian di sub-menu menjalankan **CRUD** (tambah, lihat tabel, ubah, hapus) serta fitur **cari/filter** sesuai modul; setiap input dicek validasinya (NRP 3 digit unik, status hanya nilai yang diizinkan, dan NRP harus terdaftar saat membuat jadwal/kasus). Setelah sebuah aksi selesai, aplikasi kembali ke sub-menu; jika memilih **Kembali**, pengguna balik ke Menu Utama. Seluruh data selalu ditampilkan dalam **tabel yang rapi** dengan judul di tengah. Bila saya memilih **Keluar**, program menutup dengan aman.
 
 
@@ -18,7 +21,9 @@ Saat dijalankan, 'AplikasiKantorPolisi' membuat data contoh (seed), lalu menampi
 
 <img width="544" height="665" alt="image" src="https://github.com/user-attachments/assets/2fb9de55-b1da-4d34-a61c-a7ab32229093" />
 
+
 => PENJELASAN
+
 Selanjutnya pada tampilan ini saya berada di Menu Utama lalu memilih 1. Informasi Polisi, sehingga program membuka sub-menu Fitur Informasi Polisi; selanjutnya saya memilih 1. Tambah data polisi dan program meminta input berurutan NRP, Nama, Pangkat, dan Status sambil melakukan validasi (NRP harus 3 digit dan unik, status hanya *Aktif/Cuti*). Saya mengisi NRP: 109, Nama: Yolla Karin, Pangkat: Brimob, Status: aktif; karena semua valid, data disimpan ke daftar personel dan muncul pesan "Berhasil ditambahkan." Setelah itu program kembali ke sub-menu Fitur Informasi Polisi agar saya bisa melanjutkan inputan lainnya (misalnya Lihat Data untuk melihat Yolla Karin sudah masuk di tabel, Ubah/Hapus, atau Kembali ke Menu Utama).
 
 
@@ -29,6 +34,7 @@ Selanjutnya pada tampilan ini saya berada di Menu Utama lalu memilih 1. Informas
 
 
 => PENJELASAN
+
 Selanjutnya saya berada di sub-menu Fitur Informasi Polisi dan memilih opsi 2 (Lihat Data), sehingga program menampilkan tabel "DAFTAR POLISI" berkolom NRP, Nama, Pangkat, dan Status yang berisi seluruh personel yang tersimpan saat ini; terlihat data yang baru saya tambahkan sebelumnya, yaitu NRP 109 Yolla Karin berpangkat Brimob dengan status Aktif, sedangkan baris lain adalah personel seed; setelah tabel dicetak, aplikasi otomatis kembali ke sub-menu yang sama agar saya bisa melanjutkan tindakan lain seperti melihat detail per NRP, mengubah, mencari, menghapus data, atau kembali ke Menu Utama.
 
 
@@ -41,6 +47,8 @@ Selanjutnya saya berada di sub-menu Fitur Informasi Polisi dan memilih opsi 2 (L
 
 
 => PENJELASAN
+
+
 Pada tampilan ini saya berada di sub-menu Fitur Informasi Polisi dan memilih opsi 3 (Detail Ringkasan by NRP); program meminta saya memasukkan NRP, saya ketik 106, lalu sistem mencari data personel dengan NRP tersebut dan menampilkan ringkasan satu orang—NRP 106 atas nama Dhany Indra, pangkat Jendral, status Aktif dalam kotak “DETAIL RINGKASAN”; jika NRP tidak ditemukan mestinya muncul pesan penolakan, dan setelah ringkasan ditampilkan program otomatis mengembalikan saya ke sub-menu Fitur Informasi Polisi untuk memilih aksi berikutnya.
 
 
@@ -53,11 +61,197 @@ Pada tampilan ini saya berada di sub-menu Fitur Informasi Polisi dan memilih ops
 
 
 => PENJELASAN
+
+
 Pada tampilan ini saya memilih opsi 4 (Ubah Data) di Fitur Informasi Polisi, lalu memasukkan NRP 102 agar sistem mencari record personel yang ingin diubah; program menawarkan tiga kolom yang bisa diisi sebagian atau dilewati (kosong = tidak diubah), jadi saya membiarkan nama kosong (tetap seperti semula), mengganti pangkat menjadi Kapolsek, dan mengisi status menjadi aktif; karena NRP 102 valid dan nilai status sesuai aturan (Aktif/Cuti), sistem berhasil memperbarui data dan menampilkan pesan “Diupdate.”, kemudian saya dikembalikan lagi ke sub-menu Fitur Informasi Polisi untuk melanjutkan aksi lain (misalnya lihat tabel untuk memastikan perubahan); jika NRP tidak ditemukan atau status tidak valid, muncul pesan penolakan dan perubahan dibatalkan.
 
 
 
+### FITUR INFORMASI POLISI (5. Cari (nama,pangkat))
+
+<img width="550" height="480" alt="image" src="https://github.com/user-attachments/assets/f25c2d66-8552-48c7-a5aa-cdcc5f99e164" />
+
+=> PENJELASAN
+
+Pada tampilan selanjutnya saya memilih opsi 5 (Cari) di Fitur Informasi Polisi, lalu saya memasukkan kata kunci "dhany indra"; sistem melakukan pencarian tidak pada kolom nama dan pangkat di seluruh data personel, kemudian menampilkan hasilnya dalam tabel "DAFTAR POLISI", dan karena hanya satu yang cocok maka muncul baris NRP 106 atas nama Dhany Indra berpangkat Jendral dengan status Aktif; jika tidak ada yang cocok tabel akan ditandai kosong, dan setelah hasil ditampilkan saya otomatis kembali ke sub-menu Fitur Informasi Polisi untuk melanjutkan tindakan lain seperti lihat detail, ubah, hapus, atau kembali ke Menu Utama.
+
+
+
+### FITUR INFORMASI POLISI (6. Hapus data)
+
+<img width="544" height="389" alt="image" src="https://github.com/user-attachments/assets/215cf264-b245-4d90-a388-52d865cb1ff9" />
+
+
+<img width="549" height="379" alt="image" src="https://github.com/user-attachments/assets/a41b1a1d-91ad-4d92-83b3-cc481c2e1f8e" />
+
+
+=> PENJELASAN
+
+Selanjutnya saya berada di Fitur Informasi Polisi dan memilih opsi 6 (Hapus Data Polisi), lalu saya memasukkan NRP 108; sistem mengecek keberadaan NRP tersebut, menemukan recordnya, kemudian menghapusnya dari daftar personel dan menampilkan pesan "Dihapus." sebelum mengembalikan saya ke submenu yang sama; jika NRP tidak ada atau formatnya salah, akan muncul pesan penolakan dan tidak ada data yang berubah, dan bila saya memilih "Lihat Data" setelah ini, baris dengan NRP 108 sudah tidak tampil lagi.
+
+
+### FITUR INFORMASI POLISI (7. Kembali)
+
+<img width="544" height="411" alt="image" src="https://github.com/user-attachments/assets/8edd93c9-0234-40d0-a132-b1eefed183af" />
+
+
+=> PENJELASAN
+
+Selanjutnya akan masuk lagi kedalam fitur informasi polisi lagi, disini saya megetik angka 7 (Kembali) di dalam Fitur Informasi Polisi sehingga submenu ditutup tanpa mengubah data apa pun, lalu program langsung memuat ulang layar utama dengan bingkai judul KANTOR POLISI dan sapaan kembali untuk SELAMAT DATANG DI SISTEM KANTOR POLISI. Setelah itu sistem menampilkan Menu Utama yang berisi empat opsi: Informasi Polisi, Jadwal Patroli, Kasus Penyelidikan, dan Keluar dan kursor berhenti di kolom "Pilih:" menunggu input berikutnya; pada titik ini pengguna bisa melanjutkan ke menu lain dengan mengetik angka 1, 2, atau 3, atau menutup aplikasi dengan mengetik angka 4.
+
+
+
+### MASUK KE MENU JADWAL PATROLI
+
+<img width="618" height="486" alt="image" src="https://github.com/user-attachments/assets/b2877378-15b9-4535-97c5-4c977ddd9f6b" />
+
+
+
+=> PENJELASAN
+
+Selanjutnya dari menu utama, pengguna mengetik angka 2 untuk masuk ke Jadwal Patroli; layar kemudian menampilkan kotak berjudul “JADWAL PATROLI” dengan enam opsi, yaitu membuat jadwal baru dengan mengisi tanggal berformat dd-MM-yyyy, area patroli, dan NRP petugas sehingga sistem otomatis memberi ID berformat J-angka dan status awal “Dijadwalkan”; melihat seluruh jadwal dalam tabel rapi agar tanggal, area, nama petugas, dan status mudah dibaca; mengubah jadwal tertentu dengan memilih ubah tanggal atau ubah area serta dapat menandai Telah Selesai bila patroli sudah dilakukan; memfilter daftar berdasarkan area atau status untuk menampilkan jadwal yang relevan saja; menghapus jadwal dengan memasukkan ID yang sesuai; dan kembali ke Menu Utama bila ingin berpindah ke fitur lain.
 
 
 
 
+###  JADWAL PATROLI (1. Buat jadwal)
+
+<img width="605" height="474" alt="image" src="https://github.com/user-attachments/assets/8b593fcc-c2eb-4275-bc44-d96086d5bfac" />
+
+=> PENJELASAN
+
+disini saya berada di menu Jadwal Patroli dan memilih opsi 1 (Buat Jadwal), lalu saya mengisi Tanggal: 10-10-2025, Area: Perjuangan, dan NRP personel: 104; sistem mengecek bahwa NRP 104 terdaftar di data personel, kemudian membuat entri jadwal baru dengan status awal “Dijadwalkan” dan memberi nomor otomatis J-4, ditandai oleh pesan “Ditambahkan dengan ID: J-4”. Setelah jadwal berhasil dibuat, program mengembalikan saya ke menu Jadwal Patroli; jika saya memilih “Lihat Jadwal”, baris J-4 akan muncul pada tabel, sedangkan bila NRP tidak valid maka pembuatan jadwal akan ditolak dengan pesan kesalahan.
+
+
+
+### JADWAL PATROLI (2. Lihat jadwal)
+
+<img width="654" height="595" alt="image" src="https://github.com/user-attachments/assets/02819df7-0882-4587-8be6-8f339bdb0aa5" />
+
+=> PENJELASAN
+
+Disini program akan masuk kembali ke fitur menu pada jadwal patroli disini saya menginput dan mengetikan angka 2 sehingga masuk ke Lihat Jadwal pada menu Jadwal Patroli; sistem kemudian mencetak tabel "DAFTAR JADWAL" dengan kolom yang sejajar id berformat J-angka, Tanggal dalam pola dd-MM-yyyy, Area patroli, Nama Polisi yang otomatis diambil dari NRP dan ditampilkan bersama pangkat di dalam tanda kurung, serta Status yang menunjukkan "Dijadwalkan" atau "Telah Selesai". Seluruh baris diambil dari ArrayList jadwal yang sudah di seed maupun yang baru dibuat. Dari tampilan ini saya bisa menilai rencana patroli secara cepat, lalu kembali ke menu untuk mengubah jadwal, menandai selesai, memfilter berdasarkan area atau status, atau menghapus jadwal tertentu.
+
+
+### JADWAL PATROLI (3. Ubah jadwal(Tanggal/Area) & Tandai Telah Selesai)
+
+
+<img width="614" height="585" alt="image" src="https://github.com/user-attachments/assets/c06c820a-6be3-41e4-a06f-1ea00c950e3a" />
+
+
+=> PENJELASAN
+
+Selanjutnya saya berada di menu Jadwal Patroli dan memilih opsi 3 (Ubah Jadwal), kemudian saya memasukkan ID jadwal j-4; sistem membuka sub menu khusus "UBAH JADWAL: J-4" yang menawarkan empat aksi, saya memilih nomor 2 untuk mengubah area dan mengetik "Belatuk", sehingga data jadwal dengan ID J-4 diperbarui pada kolom Area (status dan tanggal tidak berubah) lalu saya dikembalikan ke menu Jadwal Patroli; jika setelah ini saya memilih "Lihat Jadwal", baris J-4 akan terlihat dengan area baru "Belatuk", sedangkan bila ID yang saya masukkan tidak valid, perubahan akan ditolak dan muncul pesan kesalahan.
+
+
+
+### JADWAL PATROLI (4. Filter Area/Status)
+
+<img width="660" height="507" alt="image" src="https://github.com/user-attachments/assets/9fd4f4ea-c71a-472d-bd94-09ab4aac918a" />
+
+
+<img width="630" height="489" alt="image" src="https://github.com/user-attachments/assets/6e9baa9a-2736-4a82-b8d0-62ca147ff4a4" />
+
+
+=> PENJELASAN
+
+Di bagian ini saya berada di menu Jadwal Patroli dan memilih opsi 4 (Filter Area/Status), lalu pada sub menu filter saya pilih nomor 2 (Status) dan mengetik “dijadwalkan”; sistem memvalidasi nilai status (hanya Dijadwalkan/Telah Selesai), kemudian menampilkan tabel “DAFTAR JADWAL” yang hanya berisi jadwal dengan status Dijadwalkan—terlihat J-1, J-2, dan J-4, di mana J-4 sudah memakai area baru “Belatuk”—serta kolom “Nama Polisi” diisi otomatis dari data personel (nama + pangkat); setelah hasil ditampilkan, saya dikembalikan ke menu Jadwal Patroli untuk melanjutkan aksi lain, dan jika saya memasukkan status yang tidak sesuai atau tidak ada data yang cocok maka tabel akan kosong.
+
+
+### JADWAL PATROLI (5. Hapus jadwal)
+
+
+<img width="613" height="694" alt="image" src="https://github.com/user-attachments/assets/1ee6b9c4-bb01-4e58-ad31-4cd05adbdb97" />
+
+=> PENJELASAN
+
+Pada bagian ini saya berada di menu Jadwal Patroli dan memilih opsi 5 (Hapus Jadwal); pertama saya memasukkan ID J-4, sistem menemukan data jadwal tersebut lalu menghapusnya dan menampilkan pesan "Dihapus.", setelah kembali ke menu saya mencoba lagi hapus dengan memasukkan ID yang tidak valid "12E2", sistem mengecek namun tidak menemukan data sehingga muncul pesan "ID tidak ditemukan." dan tidak ada perubahan pada data; jika ingin memastikan hasilnya, saya bisa memilih “Lihat Jadwal” untuk melihat bahwa J-4 sudah tidak ada.
+
+
+
+### JADWAL PATROLI (6. Kembali)
+
+<img width="525" height="562" alt="image" src="https://github.com/user-attachments/assets/9adecfdd-c9a7-4672-925d-73f5493c9736" />
+
+
+=> PENJELASAN
+
+Selanjutnya pilih no 6 (Kembali) pada menu Jadwal Patroli, sehingga submenu ditutup tanpa mengubah data apa pun dan program langsung menampilkan lagi banner KANTOR POLISI serta SELAMAT DATANG DI SISTEM KANTOR POLISI, lalu memunculkan Menu Utama dengan empat opsi Informasi Polisi, Jadwal Patroli, Kasus Penyelidikan, dan Keluar serta kursor berhenti di kolom "Pilih:" untuk menunggu input berikutnya (1–4).
+
+
+
+
+### MASUK KE MENU KASUS PENYELIDIKAN
+
+<img width="620" height="465" alt="image" src="https://github.com/user-attachments/assets/d99c4da2-6fdf-48c3-9a13-3a55c5b0d7c3" />
+
+
+=> PENJELASAN
+
+Dari Menu Utama disini ingin masuk kedalam menu kasus penyelidikan dan mengetik angka 3 untuk membuka Kasus Penyelidikan, lalu layar menampilkan kotak berisi pilihan pengelolaan kasus. Di sini pengguna dapat menambahkan kasus baru dengan mengisi judul dan NRP penyidik sehingga sistem otomatis membuat ID K-angka dan memberi status awal Baru; melihat daftar kasus dengan opsi filter sehingga dapat ditampilkan Semua, hanya yang Baru, yang sedang Proses, atau yang sudah Ditutup dalam tabel yang rapi; mengubah status suatu kasus dengan memasukkan ID lalu memilih apakah statusnya menjadi Baru, Proses, atau Ditutup agar perkembangan perkara tercatat; menghapus kasus tertentu dengan memasukkan ID bila datanya tidak lagi diperlukan; atau kembali ke Menu Utama. Seluruh perintah dijalankan dengan mengetik angka 1 sampai 5 pada kolom "Pilih:" sesuai kebutuhan.
+
+
+
+
+### KASUS PENYELIDIKAN (1. Tambah kasus)
+
+<img width="626" height="434" alt="image" src="https://github.com/user-attachments/assets/4a2ccf3b-bb1f-4d98-ae29-71f394625540" />
+
+=> PENJELASAN
+
+Di menu Kasus Penyelidikan saya memilih opsi 1 (Tambah Kasus), lalu saya mengisi judul "Pembunuhan" dan NRP penyidik 104; sistem memeriksa bahwa NRP 104 terdaftar di data personel, menetapkan status awal kasus sebagai "Baru", membuat ID otomatis K-4, dan menampilkan konfirmasi "Ditambahkan dengan ID: K-4", setelah itu saya kembali ke menu Kasus Penyelidikan untuk melanjutkan (jika NRP tidak valid, penambahan akan ditolak dan tidak ada data baru yang dibuat).
+
+
+
+
+### KASUS PENYELIDIKAN (2. Lihat Kasus (Filter Status))
+
+<img width="620" height="675" alt="image" src="https://github.com/user-attachments/assets/72e75f49-2d06-4d2d-b37e-d11d553ca306" />
+
+
+=> PENJELASAN
+
+Pada bagian ini saya berada di menu Kasus Penyelidikan dan memilih opsi 2 (Lihat Kasus), lalu di sub-menu "LIHAT KASU" saya memilih 1 (Semua) sehingga sistem menampilkan tabel "DAFTAR KASUS" berisi seluruh kasus saat ini lengkap dengan kolom ID, Judul, Status, dan NRP penyidik; terlihat K-1 "Pencurian Motor di Pasar Raya" berstatus Baru, K-2 "Penipuan Online" berstatus Proses, K-3 "Penganiayaan Ringan" berstatus Ditutup, serta kasus yang baru saya tambahkan tadi K-4 "Pembunuhan" berstatus Baru dengan penyidik 104; setelah daftar dicetak, program kembali ke menu Kasus Penyelidikan agar saya bisa memilih aksi berikutnya (lihat per status, ubah status, atau hapus kasus).
+
+
+
+### KASUS PENYELIDIKAN (3. Ubah Status (Baru/Proses/Ditutup))
+
+<img width="608" height="431" alt="image" src="https://github.com/user-attachments/assets/c8e5cda9-4d3e-48a4-b771-72475a927a3f" />
+
+=> PENJELASAN
+
+Pada layar ini saya berada di menu Kasus Penyelidikan dan memilih opsi 3 (Ubah Status), lalu saya memasukkan ID kasus **k-1** dan status baru **proses**; sistem mengecek bahwa ID ada dan status termasuk pilihan yang valid (Baru/Proses/Ditutup), kemudian memperbarui status kasus k-1 menjadi Proses dan menampilkan pesan “Diupdate.” sebelum mengembalikan saya ke menu Kasus Penyelidikan; jika saya mengisi ID yang tidak ada atau status di luar pilihan, perubahan akan ditolak dan muncul pesan kesalahan.
+
+
+
+
+### KASUS PENYELIDIKAN (4. Hapus kasus)
+
+
+<img width="605" height="410" alt="image" src="https://github.com/user-attachments/assets/9a969e27-3031-4190-9b0b-5ef992ac504f" />
+
+=> PENJELASAN
+
+Di bagian ini saya berada di menu Kasus Penyelidikan dan memilih opsi 4 (Hapus Kasus), lalu saya memasukkan ID k-4; sistem mengecek keberadaan kasus tersebut, menemukan datanya, kemudian menghapusnya dari daftar dan menampilkan konfirmasi **“Dihapus.”** sebelum mengembalikan saya ke menu Kasus Penyelidikan; jika saya memilih “Lihat Kasus” setelah ini, baris dengan ID k-4 sudah tidak ada, sedangkan bila ID yang saya masukkan tidak valid maka muncul pesan “ID tidak ditemukan” dan tidak ada perubahan data.
+
+
+
+###  KASUS PENYELIDIKAN (5. Kembali)
+
+<img width="483" height="446" alt="image" src="https://github.com/user-attachments/assets/50e60b5c-ddcc-4357-b9cd-0b720d76e63b" />
+
+
+=> PENJELASAN
+
+Selanjutnya saya mengetik no 5 (Kembali) pada menu Kasus Penyelidikan, sehingga submenu ditutup tanpa mengubah data apa pun dan program menampilkan lagi banner KANTOR POLISI serta SELAMAT DATANG DI SISTEM KANTOR POLISI, lalu muncul Menu Utama dengan empat opsi1 Informasi Polisi, 2 Jadwal Patroli, 3 Kasus Penyelidikan, 4 Keluar.
+
+
+
+### KELUAR DARI PROGRAM
+
+<img width="660" height="440" alt="image" src="https://github.com/user-attachments/assets/f500a6a5-5cbe-473d-a326-e64f32eb119e" />
+
+=> PENJELASAN
+
+Selanjutnya saya ingin keluar dari program dan mengetik angka 4 (Keluar) di Menu Utama, program menampilkan pesan “Selesai.” dan eksekusi berakhir. Terminal/IDE kemudian mencetak ringkasan proses (BUILD SUCCESS, durasi, dan waktu selesai) sebagai tanda bahwa aplikasi Sistem Kantor Polisi telah ditutup dengan normal tanpa error.
